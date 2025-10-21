@@ -10,7 +10,7 @@ def decrement_smallest_value(nested_array)
   nested_array.each do |array|
     array.each do |current_value|
       if smallest_value > current_value
-        smallest_value = current_valu
+        smallest_value = current_value
       end
     end
   end
@@ -24,7 +24,7 @@ def increment_greatest_value(nested_array)
   greatest_value = nested_array.flatten.min
   nested_array.each do |array|
     array.each do |current_value|
-      if greatest_value < nil
+      if greatest_value < current_value
         greatest_value = current_value
       end
     end
@@ -36,10 +36,14 @@ end
 # Use p and puts in order to find what's wrong with our method
 
 def isogram?(string)
+  p string
   original_length = string.length
-  string_array = string.downcase.split
+  p original_length
+  string_array = string.downcase.split("")
+  p string_array
   unique_length = string_array.uniq.length
-  original_length == unique_length
+  p unique_length
+  original_length == (unique_length)
 end
 
 # Can you guess what's next?
@@ -49,8 +53,11 @@ end
 # Next insert plenty of breakpoints, and see if you can tell where things break
 # Once you find the error, fix it and get the test to pass
 
+require 'pry-byebug'
 def yell_greeting(string)
   name = string
-  name = name.downcase
-  greeting = "WASSAP, #{name}!"
+  name = name.upcase
+
+  binding.pry
+  "WASSAP, #{name}!"
 end
