@@ -7,4 +7,13 @@ def total_integers(array)
   # NOTE: you may notice that `Array#flatten` would make quick work of this,
   # but you should implement this method without using it. The tests will check
   # to make sure `#flatten` isn't used.
+  @result ||= 0
+  for elements in array
+    if elements.is_a?(Array)
+      total_integers(elements)
+    else
+      @result += 1  if elements.is_a?(Integer)
+    end
+  end
+  @result
 end
