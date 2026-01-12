@@ -13,4 +13,13 @@ def permutations(array)
   #
   # NOTE: the tests do not check for ordering, so a return of `[[1, 2], [2, 1]]`
   # will be treated the same as `[[2, 1], [1, 2]]`
+  return [[]] if array.length == 0
+
+  array.reduce([]) do |accumulator, element|
+    selection = array.select { |i| i != element}
+    permutations(selection).each do |new_element|
+      accumulator << [element] + new_element
+    end
+    accumulator
+  end
 end
