@@ -5,4 +5,13 @@ def contains?(hash, search_value)
   # Examples:
   # contains?({ foo: { bar: "baz" } }, "baz") # true
   # contains?({ foo: { bar: "baz" } }, "egg") # false
+  @result ||= false
+  for objects in hash.values
+     if objects.is_a?(Hash)
+       contains?(objects, search_value)
+     else
+      @result = @result || (objects == search_value)
+     end
+  end
+  @result
 end
